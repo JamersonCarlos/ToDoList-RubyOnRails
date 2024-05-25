@@ -4,14 +4,17 @@
     <%= list.title %>
   </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= list.description %>
-  </p>
+  <% if list.description != ""%>
+    <p>
+      <strong>Description:</strong>
+      <%= list.description %>
+    </p>
+  <% end%>
 
-  <p>
-    <strong>Category:</strong>
-    <%= list.category %>
-  </p>
-
+  <% if list.category != ""%>
+    <p>
+      <strong>Category:</strong>
+      <%= list.category %>
+    </p>
+  <%end%>
 </div>
