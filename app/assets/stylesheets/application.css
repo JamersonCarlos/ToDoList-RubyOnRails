@@ -12,4 +12,174 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
+
+
+
+* { 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body { 
+    background-image: -webkit-radial-gradient( circle , #500794,  #070920);
+    flex-direction: column;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: start;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}   
+
+
+.button_new_list { 
+    text-align: center;
+    margin-top: 50px;
+    background-image: linear-gradient(45deg, #0000ff, #0087f5);
+    padding: 20px 40px;
+    font-size: 24px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.button_new_list:hover { 
+    animation-name: animation_button;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+}
+
+@keyframes animation_button {
+    0%{
+        transform: scale(1);
+    }
+
+    100%{ 
+        transform: scale(1.05);
+    }
+}
+
+.content { 
+    width: 80%; 
+    height: 100%;
+    margin-bottom: 50px;
+    max-width: 800px; /* Defina o tamanho máximo desejado */
+    padding: 20px;
+    border-radius: 15px; /* Borda arredondada opcional */
+    background-color: rgba(240, 255, 255, 0.733); 
+    margin-top: 30px;
+}
+
+.content_navbar { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 20px;
+    margin: -20px -20px 0px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.219);
+}
+
+.icons_navbar { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -20px;
+    border-top-right-radius: 15px;
+
+}
+
+.icons_navbar > span {
+    padding: 10px;
+}
+
+.icons_navbar > span:hover { 
+    background-color: #07092021;
+    cursor: pointer;
+}
+
+.icons_navbar > span > i { 
+    font-size: 24px;
+    color: #9E78CF;
+}
+
+.content_form { 
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);    
+}
+
+.form_container { 
+    text-align: center;
+}
+
+.form_container label { 
+    text-align: start;
+    font-weight: bold;
+    padding-bottom: 5px;
+}   
+
+input, textarea, select { 
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0px;
+    border: none;
+    border-radius: 5px;
+}
+
+
+input[type="submit"] { 
+    background-color: #0087f5;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover{ 
+    cursor: pointer;
+}
+
+#lists { 
+    padding-top: 20px;
+}
+
+.list_item { 
+    background-color: aliceblue;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: start;
+    border: none;
+    color: #9E78CF;
+    transition: background-color 0.8s cubic-bezier(0.075, 0.82, 0.165, 1); 
+    margin-bottom: 10px;
+}
+
+.change_list, .btn_remove { 
+    background-color: aliceblue;
+    border: none;
+    text-align: start;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+.btn_list { 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_list i { 
+    padding: 10px;
+}
+
