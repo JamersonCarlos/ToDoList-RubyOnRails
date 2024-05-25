@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Página Inicial</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+    <%= link_to "new List ToDo", new_list_path, class: "button_new_list"%>
+    <div class="content">
+        <div class="content_navbar">
+            <h2>Lists</h2>
+            <div class="icons_navbar">
+                <span>
+                    <i class="fa fa-th-large"></i>
+                </span>
+                <span >
+                    <i class="fa fa-light fa-list"></i>
+                </span>
+            </div>
+        </div>
+
+        <div id="lists">
+          <% @lists.each do |list|%>
+            <div class="list_item">
+              <%= button_to list_path(list), method: :get, class: "change_list" do %>
+                <%= render list %>
+              <% end %>
+              <div class="btn_list">
+                <%= link_to edit_list_path(list), class: "btn_edit" do %>
+                  <%= fa_icon 'pencil', class: 'fa-lg' %>
+                <%end%>
+                <%= button_to list, method: :delete, class: "btn_remove" do %>
+                  <%= image_tag 'icon_trash.svg' %>
+                <%end%>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
