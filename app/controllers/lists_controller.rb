@@ -22,15 +22,19 @@ class ListsController < ApplicationController
   # POST /lists or /lists.json
   def create
     @list = List.new(list_params)
-
-    respond_to do |format|
-      if @list.save
-        format.html { redirect_to root_path, notice: "List was successfully created." }
-        format.json { render :show, status: :created, location: @list }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
+    
+    if List.where(title: list_params['title']) == []
+      respond_to do |format|
+        if @list.save
+          format.html { redirect_to root_path, notice: "List was successfully created." }
+          format.json { render :show, status: :created, location: @list }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @list.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to root_path
     end
   end
 

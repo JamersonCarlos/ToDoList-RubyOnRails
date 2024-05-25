@@ -158,7 +158,6 @@ input[type="submit"]:hover{
     justify-content: space-between;
     text-align: start;
     border: none;
-    color: #9E78CF;
     transition: background-color 0.8s cubic-bezier(0.075, 0.82, 0.165, 1); 
     margin-bottom: 10px;
 }
@@ -169,6 +168,7 @@ input[type="submit"]:hover{
     text-align: start;
     cursor: pointer;
     font-size: 16px;
+    color: #9E78CF;
 }
 
 
@@ -181,5 +181,7 @@ input[type="submit"]:hover{
 
 .btn_list i { 
     padding: 10px;
+    color: #9E78CF;
+    
 }
 
