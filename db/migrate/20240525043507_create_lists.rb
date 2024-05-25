@@ -2,8 +2,8 @@ class CreateLists < ActiveRecord::Migration[7.1]
   def change
     create_table :lists do |t|
       t.string :title
-      t.string :description
-      t.string :category
+      t.string :description, default: ""
+      t.string :category, default: ""
 
       t.timestamps
     end
