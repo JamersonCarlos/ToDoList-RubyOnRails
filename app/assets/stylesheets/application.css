@@ -32,6 +32,10 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }   
 
+h4 { 
+    padding-bottom: 10px;
+}
+
 
 .button_new_list { 
     text-align: center;
@@ -81,7 +85,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     padding-top: 20px;
-    margin: -20px -20px 0px 0px;
+    margin: -20px -20px 20px 0px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.219);
 }
 
@@ -142,10 +146,6 @@ input[type="submit"]:hover{
     cursor: pointer;
 }
 
-#lists { 
-    padding-top: 20px;
-}
-
 .list_item { 
     background-color: aliceblue;
     font-size: 16px;
@@ -162,7 +162,7 @@ input[type="submit"]:hover{
     margin-bottom: 10px;
 }
 
-.change_list, .btn_remove { 
+.change_list, .btn_remove, .btn_edit{ 
     background-color: aliceblue;
     border: none;
     text-align: start;
@@ -185,3 +185,39 @@ input[type="submit"]:hover{
     
 }
 
+.input_title { 
+    width: 100%;
+    padding-right: 10px;
+}
+
+.input_title input  { 
+    background-color: transparent;
+    border: 1px solid #3E1671;
+    height: 40px;
+    font-size: 18px;
+}
+
+input:focus { 
+    outline: none;
+}
+
+.input_title input::placeholder { 
+    font-size: 14px;
+}
+
+.btn_submit input{ 
+    background-color: #9E78CF;
+    padding: 5px 10px;
+    color: white;
+    width: 40px;
+    height: 40px;
+}
+
+.btn_submit input:disabled { 
+    background-color: #9e78cfb7;
+}
+
+.task_completed { 
+    text-decoration: line-through;
+    color: green;
+}

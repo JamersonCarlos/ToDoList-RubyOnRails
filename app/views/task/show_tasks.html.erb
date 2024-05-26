@@ -1,0 +1,32 @@
+<div class="content">
+    <%= render "form", task: @task%>
+    <h4>Tasks to do - <%= @tasks.length%></h4>
+    <% filter_not_completed(@tasks).each do |task| %>
+      <div class="list_item">
+        <%= task.title%>
+        <div class="btn_list">
+          <%= button_to update_task_path(task.id, completed: true), method: :put, class: "btn_edit" do %>
+            <%= image_tag 'icon_ok.svg' %>
+          <%end%>
+          <%= button_to delete_task_path(task.id), method: :delete, class: "btn_remove" do %>
+            <%= image_tag 'icon_trash.svg' %>
+          <%end%>
+        </div>
+      </div>
+    <% end %>
+    <h4>Done - <%=filter_completed(@tasks).length %></h4>
+    <% filter_completed(@tasks).each do |task| %>
+      <div class="list_item">
+        <p class="task_completed">
+          <%= task.title %>
+        </p>
+        <div class="btn_list">
+          <%= button_to update_task_path(task.id, completed: false), method: :put, class: "btn_edit" do %>
+              <%= image_tag 'icon_close.svg' %>
+          <%end%>
+
+        </div>
+      </div>
+    <%end%>
+    
+</div>

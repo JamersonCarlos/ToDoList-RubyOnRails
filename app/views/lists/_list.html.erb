@@ -1,21 +1,20 @@
-<<<<<<< Updated upstream
-<div style="color: #9E78CF;">
-=======
 <div class="change_list">
->>>>>>> Stashed changes
   <p>
     <strong>Title:</strong>
     <%= list.title %>
   </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= list.description %>
-  </p>
+  <% if list.description != ""%>
+    <p>
+      <strong>Description:</strong>
+      <%= list.description %>
+    </p>
+  <% end%>
 
-  <p>
-    <strong>Category:</strong>
-    <%= list.category %>
-  </p>
-
+  <% if list.category != ""%>
+    <p>
+      <strong>Category:</strong>
+      <%= list.category %>
+    </p>
+  <%end%>
 </div>

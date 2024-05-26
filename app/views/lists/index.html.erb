@@ -24,7 +24,7 @@
         <div id="lists">
           <% @lists.each do |list|%>
             <div class="list_item">
-              <%= button_to root_path , method: :get, class: "change_list" do %>
+              <%= button_to show_tasks_path(list.id) , method: :get, class: "change_list" do %>
                 <%= render list%>
               <% end %> 
               <div class="btn_list">

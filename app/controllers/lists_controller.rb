@@ -8,6 +8,7 @@ class ListsController < ApplicationController
 
   # GET /lists/1 or /lists/1.json
   def show
+    @tasks = Task.where(list_id: @list.id)
   end
 
   # GET /lists/new
