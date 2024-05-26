@@ -72,12 +72,17 @@ h4 {
 .content { 
     width: 80%; 
     height: 100%;
+    overflow-y: auto;
     margin-bottom: 50px;
     max-width: 800px; /* Defina o tamanho máximo desejado */
     padding: 20px;
     border-radius: 15px; /* Borda arredondada opcional */
     background-color: rgba(240, 255, 255, 0.733); 
     margin-top: 30px;
+}
+
+.content::-webkit-scrollbar { 
+    width: 0px;
 }
 
 .content_navbar { 
