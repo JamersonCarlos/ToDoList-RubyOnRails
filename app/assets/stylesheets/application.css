@@ -179,8 +179,8 @@ input[type="submit"]:hover{
     justify-content: center;
 }
 
-.btn_list i { 
-    padding: 10px;
+.btn_list img { 
+    padding-right: 10px;
     color: #9E78CF;
     
 }
@@ -221,3 +221,11 @@ input:focus {
     text-decoration: line-through;
     color: green;
 }
+
+.form_new_task { 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
