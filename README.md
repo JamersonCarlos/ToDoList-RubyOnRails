@@ -34,6 +34,10 @@ project proposed as a technical challenge for v360 stage selection, it is a ToDo
    ```bash
    bundle install
    ```
+4. Execute command
+   ```bash
+   rails db:migrate
+   ```
 3. rising application
    ```bash
    rails server
