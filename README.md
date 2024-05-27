@@ -7,6 +7,7 @@ project proposed as a technical challenge for v360 stage selection, it is a ToDo
 
 ## 🌐 starting application commands
 
+### initial settings
 1. Make sure you have Ruby 3.0+ installed:
    ```bash
    ruby -v
@@ -23,11 +24,19 @@ project proposed as a technical challenge for v360 stage selection, it is a ToDo
     rails -v
     # Should return rails 3.x.x
     ```
-### ⚙️ configuration 
+### starting application
 1. clone repository
-  ```bash
-  git clone https://github.com/JamersonCarlos/ToDoList-RubyOnRails.git
-  cd ToDoList-RubyOnRails
-  ```
+   ```bash
+   git clone https://github.com/JamersonCarlos/ToDoList-RubyOnRails.git
+   cd ToDoList-RubyOnRails
+   ```
 2. install the dependencies
    ```bash
+   bundle install
+   ```
+3. rising application
+   ```bash
+   rails server
+   #returns information about the application
+   ```
+
