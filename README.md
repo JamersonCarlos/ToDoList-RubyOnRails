@@ -1,24 +1,33 @@
-# README
+# 🚀 My Project
+project proposed as a technical challenge for v360 stage selection, it is a ToDo List, where one or more Tasks are associated with a List.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### ⚙️ Technical requirements 
+- **Ruby**: Versão 3.0 ou superior 
+- **Rails**: Versão 7.0 ou superior
 
-Things you may want to cover:
+## 🌐 starting application commands
 
-* Ruby version
+1. Make sure you have Ruby 3.0+ installed:
+   ```bash
+   ruby -v
+   # Should return ruby 3.x.x
 
-* System dependencies
+2. install bundler
+    ```bash
+    gem install bundler
+    ```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3. install rails
+    ```bash
+    gem install rails
+    rails -v
+    # Should return rails 3.x.x
+    ```
+### ⚙️ configuration 
+1. clone repository
+  ```bash
+  git clone https://github.com/JamersonCarlos/ToDoList-RubyOnRails.git
+  cd ToDoList-RubyOnRails
+  ```
+2. install the dependencies
+   ```bash
