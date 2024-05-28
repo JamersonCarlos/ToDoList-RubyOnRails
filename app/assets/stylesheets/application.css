@@ -320,7 +320,6 @@ input:focus {
     background: #3E1671; /* Cor da barra de rolagem */
 }
 
-
 .formUpdateTask input { 
     background-color: transparent;
     border: 1px solid #500794;
@@ -329,4 +328,8 @@ input:focus {
 
 .taskTitle:hover { 
     cursor: pointer;
+}
+
+.item_content { 
+    margin-right: 10px;
 }
