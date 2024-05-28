@@ -46,7 +46,9 @@
             </div>
             <div id="gridView" class="hidden">
               <% agroup_category(@lists).each do |category, list_category|%>
-                <h3><%= category %> - <%= list_category.length%></h3>
+                <% if category.present? %>
+                  <h3><%= category %> - <%= list_category.length %></h3>
+                <% end %>
                 <div class="list_horizontal">
                   <% list_category.each do |item|%>
                     <div class="card_list">
