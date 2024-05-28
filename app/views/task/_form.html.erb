@@ -6,7 +6,7 @@
             <%= form.text_field :title, placeholder: "Add a new task", id: 'task_title' %>
         </div>
         <div class="btn_submit">
-            <%= form.submit "+", id: 'submit_button', disabled: true%>
+            <%= form.submit "+", id: 'submit', disabled: true%>
         </div>
     </div>
 <%end%>
@@ -15,7 +15,7 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const taskTitleInput = document.getElementById('task_title');
-    const submitButton = document.getElementById('submit_button');
+    const submitButton = document.getElementById('submit');
 
     taskTitleInput.addEventListener('input', function() {
       submitButton.disabled = taskTitleInput.value.trim() === ''; // Desativa o botão se o campo estiver vazio
