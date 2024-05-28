@@ -36,6 +36,9 @@ h4 {
     padding-bottom: 10px;
 }
 
+p { 
+    text-align: justify;
+}
 
 .btn_new_list { 
     text-align: center;
@@ -178,6 +181,7 @@ input[type="submit"]:hover{
     cursor: pointer;
     font-size: 16px;
     color: #9E78CF;
+    padding-right: 10px;
 }
 
 
@@ -185,7 +189,11 @@ input[type="submit"]:hover{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
+}
+
+.btn_list_grid { 
+    width: 100%;
 }
 
 .btn_edit, .btn_remove { 
