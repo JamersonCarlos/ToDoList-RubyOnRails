@@ -6,10 +6,10 @@
       <h4>Tasks to do - <%= @tasks.length%></h4>
       <% filter_not_completed(@tasks).each do |task| %>
         <div class="list_item">
-          <p id="taskTitle">
+          <p id="taskTitle_<%= task.id %>" class="taskTitle">
             <%= task.title %>
           </p>
-          <div id="formUpdateTask" class="hidden">
+          <div id="formUpdateTask_<%= task.id %>" class="formUpdateTask hidden">
             <%= form_with(model: task, local:true , url: update_task_path(task.id)) do |form| %>
               <div>
                 <%= form.text_field :title %>
@@ -45,12 +45,13 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const title = document.getElementById("taskTitle")
-    const form = document.getElementById("formUpdateTask")
-
-    title.addEventListener("click", function() {
+     document.querySelectorAll(".taskTitle").forEach(function(title) {
+      title.addEventListener("click", function() {
+        const taskId = title.id.split('_')[1];
+        const form = document.getElementById(`formUpdateTask_${taskId}`);
         title.classList.add("hidden");
-        form.classList.remove("hidden"); 
+        form.classList.remove("hidden");
+      });
     });
   });
 </script>
