@@ -6,7 +6,16 @@
       <h4>Tasks to do - <%= @tasks.length%></h4>
       <% filter_not_completed(@tasks).each do |task| %>
         <div class="list_item">
-          <%= task.title%>
+          <p id="taskTitle">
+            <%= task.title %>
+          </p>
+          <div id="formUpdateTask" class="hidden">
+            <%= form_with(model: task, local:true , url: update_task_path(task.id)) do |form| %>
+              <div>
+                <%= form.text_field :title %>
+              </div>
+            <%end%>
+          </div>
           <div class="btn_list">
             <%= button_to update_task_path(task.id, completed: true), method: :put, class: "btn_edit" do %>
               <%= image_tag 'icon_ok.svg' %>
@@ -32,5 +41,16 @@
         </div>
       <%end%>
     </div>
-    
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const title = document.getElementById("taskTitle")
+    const form = document.getElementById("formUpdateTask")
+
+    title.addEventListener("click", function() {
+        title.classList.add("hidden");
+        form.classList.remove("hidden"); 
+    });
+  });
+</script>
