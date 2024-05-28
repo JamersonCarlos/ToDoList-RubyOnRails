@@ -13,8 +13,8 @@
   <% end %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.label :title, style: "display: block"%>
+    <%= form.text_field :title , id: "listTitle"%>
   </div>
 
   <div>
@@ -24,12 +24,33 @@
 
   <div>
     <%= form.label :category, style: "display: block" %>
-    <%= form.select :category, options_for_select([['', '', 'Work', 'work'], ['Personal', 'personal'], ['Study', 'study'], ['Health', 'health'], ['Finance', 'finance'], ['Social', 'social'], ['Travel', 'travel'], ['Projects', 'projects'], ['Leisure', 'leisure'], ['Priority', 'priority']]), {}, { class: 'form-select' } %>
+    <%= form.select :category, options_for_select([['', '',], ['Work', 'work'], ['Personal', 'personal'], ['Study', 'study'], ['Health', 'health'], ['Finance', 'finance'], ['Social', 'social'], ['Travel', 'travel'], ['Projects', 'projects'], ['Leisure', 'leisure'], ['Priority', 'priority']]), {}, { class: 'form-select' } %>
   </div>
 
   <div>
-    <%= form.submit %>
-  </div>
-  
-<% end %>
+    <%= form.submit  id: 'submit_button' %>
+  </div>  
+
+ 
+  <% end %>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const taskTitleInput = document.getElementById('listTitle');
+      const submitButton = document.getElementById('submit_button');
+
+      
+      function updateSubmitButton() {
+        submitButton.disabled = taskTitleInput.value.trim() === ''; 
+      }
+
+
+      updateSubmitButton();
+
+      taskTitleInput.addEventListener('input', function() {
+        submitButton.disabled = taskTitleInput.value.trim() === ''; // Desativa o botão se o campo estiver vazio
+      }); 
+    });
+  </script>
 </div>
+
+

@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   post '/show_tasks/:id', to: 'task#create'
   delete '/tasks/:id', to: 'task#destroy', as: 'delete_task'
   put '/tasks/:id', to: 'task#update', as: 'update_task'
+  patch '/tasks/:id', to: 'task#update'
+
   root 'lists#index'
 end

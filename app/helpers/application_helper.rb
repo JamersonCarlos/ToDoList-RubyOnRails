@@ -14,7 +14,6 @@ module ApplicationHelper
 
     def agroup_category(lists)
         lists.group_by { |item| item[:category]}
-
     end
         
 end
