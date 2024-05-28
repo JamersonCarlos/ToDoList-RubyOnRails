@@ -31,14 +31,14 @@
       <h4>Done - <%=filter_completed(@tasks).length %></h4>
       <% filter_completed(@tasks).each do |task| %>
         <div class="list_item">
-          <p class="task_completed">
-            <%= task.title %>
-          </p>
+          <div class="item_info">
+            <p class="task_completed"><%= task.title %></p>
+            <div class="date_content"><%=transform_format_date(task.done_at)%></div>
+          </div>
           <div class="btn_list">
             <%= button_to update_task_path(task.id, completed: false), method: :put, class: "btn_edit" do %>
                 <%= image_tag 'icon_close.svg' %>
             <%end%>
-
           </div>
         </div>
       <%end%>
