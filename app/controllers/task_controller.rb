@@ -1,5 +1,5 @@
 class TaskController < ApplicationController
-    before_action :set_list, only:  %i[show_tasks create]
+    before_action :set_list, only:  %i[show_tasks]
 
     def show_tasks 
         @tasks = Task.where(list_id: @list.id)

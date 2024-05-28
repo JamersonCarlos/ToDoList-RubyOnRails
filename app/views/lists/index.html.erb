@@ -44,14 +44,14 @@
                 <% if category.present? %>
                   <h3><%= category %> - <%= list_category.length %></h3>
                 <% end %>
-                <div class="list_horizontal">
+                <div class="grid">
                   <% list_category.each do |item|%>
-                    <div class="card_list">
+                    <div class="grid_item">
                         <h4><%= item.title %></h4>
                         <p>
                           <%= item.description %>
                         </p>
-                        <div class="btn_list btn_list_grid">
+                        <div class="btn_list btn_grid_item">
                           <%= link_to edit_list_path(item), class: "btn_edit" do %>
                             <%= fa_icon 'pencil', class: 'fa-lg' %>
                           <%end%>
