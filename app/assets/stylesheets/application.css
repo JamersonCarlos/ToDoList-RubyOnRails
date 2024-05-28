@@ -320,6 +320,10 @@ input:focus {
     background: #3E1671; /* Cor da barra de rolagem */
 }
 
+.formUpdateTask { 
+    width: auto;
+}
+
 .formUpdateTask input { 
     background-color: transparent;
     border: 1px solid #500794;
@@ -332,4 +336,14 @@ input:focus {
 
 .item_content { 
     margin-right: 10px;
+}
+
+#submit_button { 
+    color: #070920;
+    background-color: #0087f5;
+}
+
+#submit_button:disabled { 
+    background-color: #0087f571;
+    color: #07092083;
 }
