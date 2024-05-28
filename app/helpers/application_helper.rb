@@ -7,4 +7,10 @@ module ApplicationHelper
     def filter_not_completed(tasks)
         tasks.filter { |task| task.completed == false}
     end
+
+
+    def counter_tasks(id)
+        Task.where(list_id: id).length
+    end 
+        
 end
