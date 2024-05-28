@@ -15,5 +15,10 @@ module ApplicationHelper
     def agroup_category(lists)
         lists.group_by { |item| item[:category]}
     end
+
+    def transform_format_date(data)
+        datetime = DateTime.parse(data.to_s) 
+        datetime.strftime('%d/%m/%Y - %H:%M')
+    end
         
 end
