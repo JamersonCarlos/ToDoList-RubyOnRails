@@ -28,8 +28,27 @@
   </div>
 
   <div>
-    <%= form.submit %>
-  </div>
-  
-<% end %>
+    <%= form.submit  id: 'submit_button' %>
+  </div>  
+
+ 
+  <% end %>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const taskTitleInput = document.getElementById('listTitle');
+      const submitButton = document.getElementById('submit_button');
+
+      
+      function updateSubmitButton() {
+        submitButton.disabled = taskTitleInput.value.trim() === ''; 
+      }
+
+
+      updateSubmitButton();
+
+      taskTitleInput.addEventListener('input', function() {
+        submitButton.disabled = taskTitleInput.value.trim() === ''; // Desativa o botão se o campo estiver vazio
+      }); 
+    });
+  </script>
 </div>
