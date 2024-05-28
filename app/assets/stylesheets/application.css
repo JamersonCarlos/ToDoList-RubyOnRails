@@ -360,3 +360,15 @@ input:focus {
     background-color: #0087f571;
     color: #07092083;
 }
+
+.item_info > p { 
+    padding-bottom: 5px;
+}
+
+.date_content { 
+    background-color: rgb(33, 104, 33);
+    color: aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 13px;
+}
