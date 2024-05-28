@@ -126,14 +126,20 @@ p {
 }
 
 .icons_navbar > span:hover { 
-    background-color: #07092021;
-    cursor: pointer;
+    background-color: #07092021;   
 }
 
 .icons_navbar > span > i { 
     font-size: 24px;
     color: #9E78CF;
 }
+
+#listViewBtn > i { 
+    color: #8656c5;
+}
+
+
+
 
 .content_form { 
     height: auto;
