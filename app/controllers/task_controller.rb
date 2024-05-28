@@ -11,9 +11,10 @@ class TaskController < ApplicationController
 
     def create
         @task = Task.new(title: params[:title], list_id: params[:id])
-        if @task.save
-            redirect_to request.referrer
+        if Task.where(title: @task.title) == []
+            @task.save
         end 
+        redirect_to request.referrer
     end
 
     def destroy
@@ -26,6 +27,7 @@ class TaskController < ApplicationController
         @task = Task.find(params[:id])
         
         if params[:task][:title].present?
+        if params[:task].present? && params[:task][:title].present?
             @task.update(title: params[:task][:title])
         else 
             @task.update(completed: params[:completed] == "true")
