@@ -37,10 +37,10 @@ h4 {
 }
 
 
-.button_new_list { 
+.btn_new_list { 
     text-align: center;
     margin-top: 50px;
-    background-image: linear-gradient(45deg, #0000ff, #0087f5);
+    background-image: linear-gradient(45deg, #0000ff, #4EA8DE);
     padding: 20px 40px;
     font-size: 18px;
     color: white;
@@ -50,7 +50,7 @@ h4 {
     text-decoration: none;
 }
 
-.button_new_list:hover { 
+.btn_new_list:hover { 
     animation-name: animation_button;
     animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
@@ -91,7 +91,7 @@ h4 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 20px;
+    padding: 20px 0px 10px 0px ;
     margin: -20px -20px 20px 0px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.219);
 }
@@ -271,3 +271,40 @@ input:focus {
     text-decoration: underline;
 }
 
+.list_horizontal { 
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+}
+
+.card_list { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: aliceblue;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-right: 10px;
+    min-width: 200px;
+    padding: 10px;
+}
+
+.list_horizontal::-webkit-scrollbar {
+    height: 12px; /* Altura da barra de rolagem horizontal */
+}
+
+.list_horizontal::-webkit-scrollbar-track {
+    background: #e0e0e0; /* Cor da trilha da barra de rolagem */
+    border-radius: 10px;
+}
+
+.list_horizontal::-webkit-scrollbar-thumb {
+    background: #3d167194; /* Cor da barra de rolagem */
+    border-radius: 10px;
+}
+
+.list_horizontal::-webkit-scrollbar-thumb:hover {
+    background: #3E1671; /* Cor da barra de rolagem */
+}
