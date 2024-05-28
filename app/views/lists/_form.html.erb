@@ -28,7 +28,7 @@
   </div>
 
   <div>
-    <%= form.submit 'new List', id: 'submit_button', disabled: true%>
+    <%= form.submit  id: 'submit_button' %>
   </div>  
 
  
@@ -37,6 +37,14 @@
     document.addEventListener('DOMContentLoaded', function() {
       const taskTitleInput = document.getElementById('listTitle');
       const submitButton = document.getElementById('submit_button');
+
+      
+      function updateSubmitButton() {
+        submitButton.disabled = taskTitleInput.value.trim() === ''; 
+      }
+
+
+      updateSubmitButton();
 
       taskTitleInput.addEventListener('input', function() {
         submitButton.disabled = taskTitleInput.value.trim() === ''; // Desativa o botão se o campo estiver vazio
