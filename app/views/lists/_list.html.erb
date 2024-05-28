@@ -1,0 +1,25 @@
+<div class="change_list">
+  <p>
+    <strong>Title:</strong>
+    <%= list.title %>
+  </p>
+
+  <% if list.description != ""%>
+    <p>
+      <strong>Description:</strong>
+      <%= list.description %>
+    </p>
+  <% end%>
+
+  <% if list.category != ""%>
+    <p>
+      <strong>Category:</strong>
+      <%= list.category %>
+    </p>
+  <%end%>
+
+  <p>
+    <strong>Number of Tasks:</strong>
+    <%= counter_tasks(list.id) %>
+  </p>
+</div>

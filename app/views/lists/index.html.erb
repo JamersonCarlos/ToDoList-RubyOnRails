@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Página Inicial</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <style>
+    .hidden { 
+      display:none;
+    }
+  </style>
+</head>
+<body>
+    <% model_view = false %>
+    <%= link_to "new List ToDo", new_list_path, class: "btn_new_list"%>
+    <div class="content">
+        <div id="content_navbar">
+            <h2 id="titleContent">Lists</h2>
+            <div class="icons_navbar">
+                <span id="gridViewBtn">
+                    <i class="fa fa-th-large"></i>
+                </span>
+                <span id="listViewBtn">
+                    <i class="fa fa-light fa-list"></i>
+                </span>
+            </div>
+        </div>
+        <div>
+            <div id="listView">
+              <% @lists.each do |list|%>
+                <div class="list_item">
+                  <%= button_to show_tasks_path(list.id) , method: :get, class: "change_list" do %>
+                    <%= render list%>
+                  <% end %> 
+                  <div class="btn_list">
+                    <%= link_to edit_list_path(list), class: "btn_edit" do %>
+                      <%= fa_icon 'pencil', class: 'fa-lg' %>
+                    <%end%>
+                    <%= button_to list, method: :delete, class: "btn_remove" do %>
+                      <%= image_tag 'icon_trash.svg' %>
+                    <%end%>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div id="gridView" class="hidden">
+              <% agroup_category(@lists).each do |category, list_category|%>
+                <h3><%= category %> - <%= list_category.length%></h3>
+                <div class="list_horizontal">
+                  <% list_category.each do |item|%>
+                    <div class="card_list">
+                        <h4><%= item.title %></h4>
+                        <p>
+                          <%= item.description %>
+                        </p>
+                        <div class="btn_list btn_list_grid">
+                          <%= link_to edit_list_path(item), class: "btn_edit" do %>
+                            <%= fa_icon 'pencil', class: 'fa-lg' %>
+                          <%end%>
+                          <%= button_to item, method: :delete, class: "btn_remove" do %>
+                            <%= image_tag 'icon_trash.svg' %>
+                          <%end%>
+                        </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+         
+        </div>
+    </div>
+
+    <script>
+     document.addEventListener("DOMContentLoaded", function() {
+      const gridViewBtn = document.getElementById("gridViewBtn");
+      const listViewBtn = document.getElementById("listViewBtn");
+      const gridView = document.getElementById("gridView");
+      const listView = document.getElementById("listView");
+      const titleContent = document.getElementById("titleContent");
+
+      gridViewBtn.addEventListener("click", function() {
+        listView.classList.add("hidden");
+        gridView.classList.remove("hidden");
+        titleContent.textContent = "Lists by category";
+      });
+
+      listViewBtn.addEventListener("click", function() {
+        gridView.classList.add("hidden");
+        listView.classList.remove("hidden");
+        titleContent.textContent = "Lists";
+      });
+    });
+    </script>
+</body>
+</html>
+
+
+
+
