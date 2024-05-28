@@ -24,7 +24,13 @@ class TaskController < ApplicationController
 
     def update 
         @task = Task.find(params[:id])
-        @task.update(completed: params[:completed] == "true")
+        
+        if params[:task][:title].present?
+            @task.update(title: params[:task][:title])
+        else 
+            @task.update(completed: params[:completed] == "true")
+        end
+
         redirect_to request.referrer
     end
         
