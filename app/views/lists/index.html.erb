@@ -9,7 +9,7 @@
 <body>
     <%= link_to "new List ToDo", new_list_path, class: "button_new_list"%>
     <div class="content">
-        <div class="content_navbar">
+        <div id="content_navbar">
             <h2>Lists</h2>
             <div class="icons_navbar">
                 <span>
@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div id="lists">
+        <div class="list">
           <% @lists.each do |list|%>
             <div class="list_item">
               <%= button_to show_tasks_path(list.id) , method: :get, class: "change_list" do %>
@@ -39,8 +39,10 @@
           <% end %>
         </div>
     </div>
+
 </body>
 </html>
+
 
 
 
