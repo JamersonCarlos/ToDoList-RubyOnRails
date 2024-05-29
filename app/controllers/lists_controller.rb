@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_action :set_list, only: %i[ show edit update destroy ]
+  before_action :set_view, only: %i[ index update]
 
   # GET /lists or /lists.json
   def index
@@ -23,7 +24,7 @@ class ListsController < ApplicationController
   # POST /lists or /lists.json
   def create
     @list = List.new(list_params)
-    
+
     if List.where(title: list_params['title']) == []
       respond_to do |format|
         if @list.save
@@ -57,7 +58,7 @@ class ListsController < ApplicationController
     @list.destroy!
 
     respond_to do |format|
-      format.html { redirect_to lists_url, notice: "List was successfully destroyed." }
+      format.html { redirect_to lists_path(view: params[:view]), notice: "List was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -66,6 +67,10 @@ class ListsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_list
       @list = List.find(params[:id])
+    end
+
+    def set_view
+      @view = params[:view].present? ? params[:view] : ""
     end
 
     # Only allow a list of trusted parameters through.

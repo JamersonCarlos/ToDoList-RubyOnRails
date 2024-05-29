@@ -29,10 +29,10 @@
                     <%= render list%>
                   <% end %> 
                   <div class="btn_list">
-                    <%= link_to edit_list_path(list), class: "btn_edit" do %>
+                    <%= link_to edit_list_path(list, view: "list"), class: "btn_edit" do %>
                       <%= fa_icon 'pencil', class: 'fa-lg' %>
                     <%end%>
-                    <%= button_to list, method: :delete, class: "btn_remove" do %>
+                    <%= button_to delete_list_path(list, view: "list"), method: :delete, class: "btn_remove" do %>
                       <%= image_tag 'icon_trash.svg' %>
                     <%end%>
                   </div>
@@ -52,10 +52,10 @@
                           <%= item.description %>
                         </p>
                         <div class="btn_list btn_grid_item">
-                          <%= link_to edit_list_path(item), class: "btn_edit" do %>
+                          <%= link_to edit_list_path(item, view: "grid"), class: "btn_edit" do %>
                             <%= fa_icon 'pencil', class: 'fa-lg' %>
                           <%end%>
-                          <%= button_to item, method: :delete, class: "btn_remove" do %>
+                          <%= button_to delete_list_path(item, view: "grid"), method: :delete, class: "btn_remove" do %>
                             <%= image_tag 'icon_trash.svg' %>
                           <%end%>
                         </div>
@@ -75,22 +75,37 @@
       const gridView = document.getElementById("gridView");
       const listView = document.getElementById("listView");
       const titleContent = document.getElementById("titleContent");
+      const model_view = "<%= @view %>";
 
-
-      gridViewBtn.addEventListener("click", function() {
-        listView.classList.add("hidden");
-        gridView.classList.remove("hidden");
-        gridViewBtn.querySelector('i').style.color = "#8656c5";
-        listViewBtn.querySelector('i').style.color = "#9E78CF";
-        titleContent.textContent = "Lists by category";
-      });
-
-      listViewBtn.addEventListener("click", function() {
+      const modelList = () => { 
         gridView.classList.add("hidden");
         listView.classList.remove("hidden");
         gridViewBtn.querySelector('i').style.color = "#9E78CF";
         listViewBtn.querySelector('i').style.color = "#8656c5";
         titleContent.textContent = "Lists";
+      }
+
+      const modelGrid = () => { 
+        listView.classList.add("hidden");
+        gridView.classList.remove("hidden");
+        gridViewBtn.querySelector('i').style.color = "#8656c5";
+        listViewBtn.querySelector('i').style.color = "#9E78CF";
+        titleContent.textContent = "Lists by category";
+      }
+
+
+      if(model_view == "grid"){ 
+        modelGrid()
+      } else { 
+        modelList()
+      }
+
+      gridViewBtn.addEventListener("click", function() {
+        modelGrid();
+      });
+
+      listViewBtn.addEventListener("click", function() {
+        modelList();
       });
     });
     </script>

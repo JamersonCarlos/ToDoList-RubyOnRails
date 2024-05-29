@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/lists/:id', to: 'lists#show', as: 'list'
   patch '/lists/:id', to: 'lists#update'
   put '/lists/:id', to: 'lists#update'
-  delete '/lists/:id', to: 'lists#destroy'
+  delete '/lists/:id', to: 'lists#destroy', as: 'delete_list'
 
   get '/show_tasks/:id', to: 'task#show_tasks', as: 'show_tasks'
   post '/show_tasks/:id', to: 'task#create'
