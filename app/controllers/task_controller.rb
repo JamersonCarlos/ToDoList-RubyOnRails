@@ -1,5 +1,5 @@
 class TaskController < ApplicationController
-    before_action :set_list, only:  %i[show_tasks create]
+    before_action :set_list, only:  %i[show_tasks]
 
     def show_tasks 
         @tasks = Task.where(list_id: @list.id)
@@ -29,7 +29,8 @@ class TaskController < ApplicationController
         if params[:task].present? && params[:task][:title].present?
             @task.update(title: params[:task][:title])
         else 
-            @task.update(completed: params[:completed] == "true")
+            @task.update(completed: params[:completed])
+            @task.update(done_at: Time.current)
         end
 
         redirect_to request.referrer

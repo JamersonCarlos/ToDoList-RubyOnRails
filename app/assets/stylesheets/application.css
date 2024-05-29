@@ -126,13 +126,16 @@ p {
 }
 
 .icons_navbar > span:hover { 
-    background-color: #07092021;
-    cursor: pointer;
+    background-color: #07092021;   
 }
 
 .icons_navbar > span > i { 
     font-size: 24px;
     color: #9E78CF;
+}
+
+#listViewBtn > i { 
+    color: #8656c5;
 }
 
 .content_form { 
@@ -208,7 +211,7 @@ input[type="submit"]:hover{
     justify-content: end;
 }
 
-.btn_list_grid { 
+.btn_grid_item { 
     width: 100%;
 }
 
@@ -295,14 +298,14 @@ input:focus {
     text-decoration: underline;
 }
 
-.list_horizontal { 
+.grid { 
     display: flex;
     flex-direction: row;
     overflow-x: auto;
     padding: 10px;
 }
 
-.card_list { 
+.grid_item { 
     display: flex;
     flex-direction: column;
     align-items: start; 
@@ -315,21 +318,21 @@ input:focus {
     padding: 10px;
 }
 
-.list_horizontal::-webkit-scrollbar {
+.grid::-webkit-scrollbar {
     height: 12px; /* Altura da barra de rolagem horizontal */
 }
 
-.list_horizontal::-webkit-scrollbar-track {
+.grid::-webkit-scrollbar-track {
     background: #e0e0e0; /* Cor da trilha da barra de rolagem */
     border-radius: 10px;
 }
 
-.list_horizontal::-webkit-scrollbar-thumb {
+.grid::-webkit-scrollbar-thumb {
     background: #3d167194; /* Cor da barra de rolagem */
     border-radius: 10px;
 }
 
-.list_horizontal::-webkit-scrollbar-thumb:hover {
+.grid::-webkit-scrollbar-thumb:hover {
     background: #3E1671; /* Cor da barra de rolagem */
 }
 
@@ -359,4 +362,16 @@ input:focus {
 #submit_button:disabled { 
     background-color: #0087f571;
     color: #07092083;
+}
+
+.item_info > p { 
+    padding-bottom: 5px;
+}
+
+.date_content { 
+    background-color: rgb(33, 104, 33);
+    color: aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 13px;
 }
