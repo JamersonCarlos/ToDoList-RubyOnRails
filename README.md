@@ -36,7 +36,7 @@ project proposed as a technical challenge for v360 stage selection, it is a ToDo
    ```
 4. Execute command
    ```bash
-   rails db:migrate
+   rails dev:setup
    ```
 3. rising application
    ```bash
