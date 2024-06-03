@@ -17,8 +17,6 @@ Rails.application.routes.draw do
   end
 
 
-  
-
   # get '/lists',to: 'lists#index'
   # post '/lists', to: 'lists#create'
   # get '/lists/new', to: 'lists#new', as: 'new_list'
