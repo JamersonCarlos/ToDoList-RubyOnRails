@@ -24,15 +24,12 @@ class ListsController < ApplicationController
   # POST /lists or /lists.json
   def create
     @list = List.new(list_params)
-
-    if List.where(title: list_params['title']) == []
+    if List.where(title: list_params[:title]) == []
       respond_to do |format|
-        if @list.save
-          format.html { redirect_to root_path, notice: "List was successfully created." }
-          format.json { render :show, status: :created, location: @list }
+        if list_params[:title].present? && @list.save
+          format.html { redirect_to root_path }
         else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @list.errors, status: :unprocessable_entity }
+          format.html { redirect_to request.referrer, notice: "Title is a required attribute" }
         end
       end
     else
@@ -43,12 +40,11 @@ class ListsController < ApplicationController
   # PATCH/PUT /lists/1 or /lists/1.json
   def update
     respond_to do |format|
-      if @list.update(list_params)
-        format.html { redirect_to root_path, notice: "List was successfully updated." }
+      if list_params[:title].present? && @list.update(list_params) 
+        format.html { redirect_to root_path }
         format.json { render :show, status: :ok, location: @list }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
+        format.html { redirect_to request.referrer, notice: "Title is a required attribute"}
       end
     end
   end
@@ -56,9 +52,8 @@ class ListsController < ApplicationController
   # DELETE /lists/1 or /lists/1.json
   def destroy
     @list.destroy!
-
     respond_to do |format|
-      format.html { redirect_to lists_path(view: params[:view]), notice: "List was successfully destroyed." }
+      format.html { redirect_to lists_path(view: params[:view]) }
       format.json { head :no_content }
     end
   end
@@ -66,7 +61,7 @@ class ListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
-      @list = List.find(params[:id])
+      @list = List.find(params[:id].present? ? params[:id] : params[:list_id])
     end
 
     def set_view
