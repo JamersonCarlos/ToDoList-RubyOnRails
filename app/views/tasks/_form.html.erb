@@ -1,10 +1,12 @@
 
 <%= link_to 'Back', '/', class: 'back_home' %>
-<%= form_with(model: task, local: true) do |form| %>
+<%= form_with(model: [@list, @task], local: true) do |form| %>
     <div class="form_new_task">
         <div class="input_title">
-            <%= form.text_field :title, placeholder: "Add a new task", id: 'task_title' %>
+          <%= form.label :title, style: "display: none;" %>
+          <%= form.text_field :title, placeholder: "New task", id: 'task_title' %>
         </div>
+
         <div class="btn_submit">
             <%= form.submit "+", id: 'submit', disabled: true%>
         </div>

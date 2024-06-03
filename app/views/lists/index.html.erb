@@ -25,14 +25,14 @@
             <div id="listView">
               <% @lists.each do |list|%>
                 <div class="list_item">
-                  <%= button_to show_tasks_path(list.id) , method: :get, class: "change_list" do %>
-                    <%= render list%>
+                  <%= button_to list_tasks_path(list.id) , method: :get, class: "change_list" do %>
+                    <%= render list %>
                   <% end %> 
                   <div class="btn_list">
                     <%= link_to edit_list_path(list, view: "list"), class: "btn_edit" do %>
                       <%= fa_icon 'pencil', class: 'fa-lg' %>
                     <%end%>
-                    <%= button_to delete_list_path(list, view: "list"), method: :delete, class: "btn_remove" do %>
+                    <%= button_to list_delete_path(list, view: "list"), method: :delete, class: "btn_remove" do %>
                       <%= image_tag 'icon_trash.svg' %>
                     <%end%>
                   </div>
@@ -55,7 +55,7 @@
                           <%= link_to edit_list_path(item, view: "grid"), class: "btn_edit" do %>
                             <%= fa_icon 'pencil', class: 'fa-lg' %>
                           <%end%>
-                          <%= button_to delete_list_path(item, view: "grid"), method: :delete, class: "btn_remove" do %>
+                          <%= button_to list_delete_path(item, view: "grid"), method: :delete, class: "btn_remove" do %>
                             <%= image_tag 'icon_trash.svg' %>
                           <%end%>
                         </div>

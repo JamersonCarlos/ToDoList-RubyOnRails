@@ -1,16 +1,15 @@
-class TaskController < ApplicationController
-    before_action :set_list, only:  %i[show_tasks]
+class TasksController < ApplicationController
+    before_action :set_list, only:  %i[index]
+    before_action :set_task, only: %i[destroy]
 
-    def show_tasks 
+    def index
+        @task = Task.new
         @tasks = Task.where(list_id: @list.id)
     end
 
-    def new 
-        @task = Task.new 
-    end
-
     def create
-        @task = Task.new(title: params[:title], list_id: params[:id])
+        @task = Task.new(list_params)
+        @task.list_id = params[:list_id]
         if Task.where(title: @task.title) == []
             @task.save
         end 
@@ -18,27 +17,32 @@ class TaskController < ApplicationController
     end
 
     def destroy
-        @task = Task.find(params[:id])
         @task.destroy
         redirect_to request.referrer
     end
 
     def update 
-        @task = Task.find(params[:id])
-        
+        @task = Task.where(id: params[:id].present? ? params[:id] : params[:task_id]) 
         if params[:task].present? && params[:task][:title].present?
             @task.update(title: params[:task][:title])
         else 
             @task.update(completed: params[:completed])
             @task.update(done_at: Time.current)
         end
-
         redirect_to request.referrer
     end
         
     private 
         def set_list 
-            @list = List.find(params[:id])
+            @list = List.where(id: params[:list_id])[0]
+        end
+
+        def set_task
+            @task = Task.find_by(id: params[:task_id])
+        end
+
+        def list_params 
+            params.require(:task).permit(:title)
         end
         
    

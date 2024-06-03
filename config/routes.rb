@@ -7,20 +7,31 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  get '/lists',to: 'lists#index'
-  post '/lists', to: 'lists#create'
-  get '/lists/new', to: 'lists#new', as: 'new_list'
-  get '/lists/:id/edit', to: 'lists#edit', as: 'edit_list'
-  get '/lists/:id', to: 'lists#show', as: 'list'
-  patch '/lists/:id', to: 'lists#update'
-  put '/lists/:id', to: 'lists#update'
-  delete '/lists/:id', to: 'lists#destroy', as: 'delete_list'
+  resources :lists do    
+    delete '', to: 'lists#destroy', as: 'delete'
+    resources :tasks do 
+      patch '', to: 'tasks#update', as: 'update'
+      delete '', to: 'tasks#destroy', as: 'delete'
+      post '', to: 'tasks#create', as: ''
+    end
+  end
 
-  get '/show_tasks/:id', to: 'task#show_tasks', as: 'show_tasks'
-  post '/show_tasks/:id', to: 'task#create'
-  delete '/tasks/:id', to: 'task#destroy', as: 'delete_task'
-  put '/tasks/:id', to: 'task#update', as: 'update_task'
-  patch '/tasks/:id', to: 'task#update'
+
+  
+
+  # get '/lists',to: 'lists#index'
+  # post '/lists', to: 'lists#create'
+  # get '/lists/new', to: 'lists#new', as: 'new_list'
+  # get '/lists/:id/edit', to: 'lists#edit', as: 'edit_list'
+  # get '/lists/:id', to: 'lists#show', as: 'list'
+  # patch '/lists/:id', to: 'lists#update'
+  # put '/lists/:id', to: 'lists#update'
+  # delete '/lists/:id', to: 'lists#destroy', as: 'delete_list'
+  # get '/show_tasks/:id', to: 'task#show_tasks', as: 'show_tasks'
+  # post '/show_tasks/:id', to: 'task#create'
+  # delete '/tasks/:id', to: 'task#destroy', as: 'delete_task'
+  # put '/tasks/:id', to: 'task#update', as: 'update_task'
+  # patch '/tasks/:id', to: 'task#update'
 
   root 'lists#index'
 end
