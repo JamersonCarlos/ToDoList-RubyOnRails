@@ -1,6 +1,12 @@
 
 
 <div class="content">
+    <%= link_to 'Back', '/', class: 'back_home' %>
+    <% if flash[:notice].present? %>
+      <div class="error">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <%= render "form", task: @task%>
     <div class="list">
       <h4>Tasks to do - <%= @tasks.length%></h4>
@@ -8,10 +14,10 @@
         <div class="list_item">
           <div class="item_content">
             <p id="taskTitle_<%= task.id %>" class="taskTitle">
-            <%= task.title %>
+              <%= task.title %>
             </p>
             <div id="formUpdateTask_<%= task.id %>" class="formUpdateTask hidden">
-              <%= form_with(model: task, local:true , url: list_task_update_path(task_id: task.id)) do |form| %>
+              <%= form_with(model: task, local: true , url: list_task_update_path(task_id: task.id)) do |form| %>
                 <div>
                   <% input_id = "inputTitle_#{task.id}"%>
                   <%= form.text_field :title, id: input_id %>
@@ -20,7 +26,7 @@
             </div>
           </div>
           <div class="btn_list">
-            <%= button_to list_task_update_path(task_id: task.id, completed: true), method: :put, class: "btn_edit" do %>
+            <%= button_to list_task_update_path(task_id: task[:id] ,completed: true), method: :put, class: "btn_edit" do %>
               <%= image_tag 'icon_ok.svg' %>
             <%end%>
             <%= button_to list_task_delete_path(task_id: task.id), method: :delete, class: "btn_remove" do %>
@@ -48,6 +54,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+
      document.querySelectorAll(".taskTitle").forEach(function(title) {
       title.addEventListener("click", function() {
         const taskId = title.id.split('_')[1];
@@ -62,6 +69,12 @@
           }
         });
       });
+    }); 
+    
+    document.querySelectorAll(".error").forEach(function(error) {
+      setTimeout(function() {
+        error.classList.add("hidden");
+      }, 3000); 
     });
     
   });
