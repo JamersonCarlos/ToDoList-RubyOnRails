@@ -1,0 +1,24 @@
+<div class="auth-content">
+    <div class="head_page_authentication">
+        <%= image_tag 'icon_app.svg'%>
+        <p class="welcome">Welcome</p>
+        <p class="todo">Todo!</p>
+    </div>
+   
+    <div class="form_auth">
+        <%= form_with url: signin_path, local: true do |form| %>
+            <div>
+                <%= form.label :username %>
+                <%= form.text_field :username %>
+            </div>
+            <div>
+                <%= form.label :password %>
+                <%= form.text_field :password %>
+            </div>
+            <div>
+                <%= form.submit "login" %>
+            </div>
+        <% end %>
+    </div>
+    <p class="link_register">Dont  have and account? <%= link_to 'Register' %></p>
+</>  

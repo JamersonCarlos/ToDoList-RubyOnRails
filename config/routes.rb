@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/login', to: 'authentication#login'
+  get '/register', to: 'authentiication#register'
+  post '/login', to: 'authentication#signin', as: 'signin'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -15,8 +18,6 @@ Rails.application.routes.draw do
       post '', to: 'tasks#create', as: ''
     end
   end
-
-
   
 
   # get '/lists',to: 'lists#index'
@@ -33,5 +34,5 @@ Rails.application.routes.draw do
   # put '/tasks/:id', to: 'task#update', as: 'update_task'
   # patch '/tasks/:id', to: 'task#update'
 
-  root 'lists#index'
+  root 'authentication#login'
 end
