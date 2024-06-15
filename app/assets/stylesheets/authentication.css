@@ -1,0 +1,75 @@
+
+.auth-content { 
+    background-color: #ebefff;
+    padding: 30px;
+    min-width: 200px;
+    width: 30%;
+    border-radius: 15px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter' ,Georgia, 'Times New Roman', Times, serif;
+}
+
+.auth-content > h2 {
+    text-align: center;
+}
+
+.head_page_authentication { 
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px;
+}
+
+.head_page_authentication img { 
+    padding-right: 10px;
+}
+
+.head_page_authentication p { 
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.welcome { 
+    color: #4EA8DE;
+    padding-right: 5px;
+}
+
+.todo { 
+    color: #5E60CE; 
+}
+
+.form_auth { 
+    margin-top: 10px;
+    width: 100%;
+    font-size: 15px;
+}
+
+.form_auth input { 
+    background-color: transparent;
+    border: 1px solid #656ED3;
+    border-radius: 20px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.form_auth input[type="submit"] { 
+    background-color: #656ED3;
+    color: #AFB3FF;
+}
+
+.form_auth > h3 {
+    padding-bottom: 10px;
+}
+
+.link_register a { 
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+.link_register a:hover { 
+    text-decoration: underline;
+}
