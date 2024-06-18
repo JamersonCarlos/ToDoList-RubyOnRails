@@ -1,2 +1,28 @@
-<h1>Authentication#register</h1>
-<p>Find me in app/views/authentication/register.html.erb</p>
+<div class="auth-content">
+    <div class="head_page_authentication">
+        <%= image_tag 'icon_app.svg'%>
+        <p class="welcome">Welcome</p>
+        <p class="todo">Todo!</p>
+    </div>
+   
+    <div class="form_auth">
+        <%= form_with url: create_path, local: true do |form| %>
+            <div>
+                <%= form.label :name %>
+                <%= form.text_field :name, placeholder: "Enter your full name", required: true%>
+            </div>
+            <div>
+                <%= form.label :email %>
+                <%= form.text_field :email, required: true %>
+            </div>
+            <div>
+                <%= form.label :password %>
+                <%= form.text_field :password, required: true %>
+            </div>
+            <div>
+                <%= form.submit "register" %>
+            </div>
+        <% end %>
+    </div>
+    <p class="link_register">Have and account? <%= link_to 'Login', register_path %></p>
+</div>
