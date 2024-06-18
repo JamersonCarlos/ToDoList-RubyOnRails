@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get '/login', to: 'authentication#login'
-  get '/register', to: 'authentiication#register'
+  get '/register', to: 'authentication#register'
   post '/login', to: 'authentication#signin', as: 'signin'
+  post '/register', to: 'authentication#create', as: 'create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
