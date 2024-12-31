@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_action :set_list, only: %i[ show edit update destroy ]
+  before_action :set_view, only: %i[ index update]
 
   # GET /lists or /lists.json
   def index
@@ -52,12 +53,11 @@ class ListsController < ApplicationController
   # PATCH/PUT /lists/1 or /lists/1.json
   def update
     respond_to do |format|
-      if @list.update(list_params)
-        format.html { redirect_to root_path, notice: "List was successfully updated." }
+      if list_params[:title].present? && @list.update(list_params) 
+        format.html { redirect_to root_path }
         format.json { render :show, status: :ok, location: @list }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
+        format.html { redirect_to request.referrer, notice: "Title is a required attribute"}
       end
     end
   end

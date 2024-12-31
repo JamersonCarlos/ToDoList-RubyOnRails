@@ -1,3 +1,9 @@
+<% if flash[:notice].present? %>
+  <div class="error">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class="form_container">
   <%= form_with(model: list, local: true) do |form| %>
     <div class="input-title">
@@ -7,6 +13,7 @@
       <%= form.submit "Enviar", style: "display: none;" %>
     </div>
   <% end %>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const taskTitleInput = document.getElementById('list_title');
@@ -22,4 +29,5 @@
       taskTitleInput.addEventListener('input', updateSubmitButton);
     });
   </script>
+  
 </div>
