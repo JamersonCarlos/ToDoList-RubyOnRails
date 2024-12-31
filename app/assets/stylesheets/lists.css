@@ -63,6 +63,10 @@ h2 {
     width: 100%;
 }
 
+.item-list:disabled { 
+    color: black;
+}
+
 .item-list-container { 
     display: flex;
     align-items: center;
@@ -80,7 +84,6 @@ h2 {
 
 .list_title { 
     width: 80%;
-    
 }
 
 
@@ -145,15 +148,15 @@ h2 {
 }
 
   
-  .arrow-icon {
-    transition: transform 0.3s ease; /* Animação suave */
+.arrow-icon {
+    transition: transform 0.3s ease; 
     transform: rotate(90deg);
-  }
-  
-  /* Quando o card está ativo */
-  .arrow-icon.rotated {
-    transform: rotate(0deg); /* Rotaciona 90 graus */
-  }
+}
+
+
+.arrow-icon.rotated {
+transform: rotate(0deg); 
+}
 
 
   .include-task { 
@@ -166,3 +169,16 @@ h2 {
     padding-left: 10px;
     cursor: pointer;
   }
+
+.form_update_list > form { 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#button_ok_edit { 
+    background-color: transparent;
+    border: none;
+    margin-left: 10px;
+}

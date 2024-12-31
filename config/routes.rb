@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :lists
 
   put '/tasks/:id', to: 'tasks#update', as: 'update_task'
+  put '/lists/:id', to: 'lists#update', as: 'update_list'
   delete '/tasks/:id', to: 'tasks#destroy', as: 'delete_task'
   delete '/lists/:id', to: 'lists#destroy', as: 'delete_list'
 end 
