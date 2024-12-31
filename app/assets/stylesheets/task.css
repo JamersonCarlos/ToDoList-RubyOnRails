@@ -238,7 +238,7 @@ input:focus {
     justify-content: space-between;
 }
 
-.form_update_task { 
+.form_update_task{ 
     width: 70%;
 }
 
@@ -254,10 +254,15 @@ input {
     border-radius: 3px;
 }
 
-input[type="text"] {
-    width: 400px;
+
+.button_edit, .button_edit_list, .button_edit_cancel, #button_ok_edit { 
+    cursor: pointer;
 }
 
-.button_edit, .button_edit_cancel{ 
-    cursor: pointer;
+.div_input_title {
+    width: 70%;
+}
+
+.title_input { 
+    width: 100%;
 }
