@@ -256,7 +256,7 @@ DEPENDENCIES
   font-awesome-rails (~> 4.7, >= 4.7.0.8)
   importmap-rails
   jbuilder
-  pg (~> 1.5, >= 1.5.9)
+  pg
   puma (>= 5.0)
   rails (~> 7.1.1)
   selenium-webdriver
