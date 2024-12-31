@@ -1,0 +1,17 @@
+<!-- Header Section -->
+<div class="title_section_tasks">
+  <h2>✏️ Tasks</h2>
+</div>
+<!-- Chosen filter -->
+<%= render 'tasks/dropdown_filter', select: 'All tasks' %>
+<!-- View tasks Incompleted -->
+<div class="tasks-incomplete">
+  <%= render 'tasks/list_tasks', tasks: filter_not_completed(@tasks) %>
+</div>
+<!-- View tasks completed -->
+<div class="completed-tasks">
+  <h2>✅ Tasks Completed - <%= filter_completed(@tasks).length %></h2>
+</div>
+<div class="tasks-completed">
+  <%= render 'tasks/list_tasks', tasks: filter_completed(@tasks) %>
+</div>

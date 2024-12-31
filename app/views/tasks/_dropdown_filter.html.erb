@@ -1,0 +1,44 @@
+<div class="navigation_task">
+  <div>
+    <%= render "tasks/form", task: @Task%>
+  </div>
+  <div class="display-choice">
+    <p>Display: <strong><%= select %></strong></p>
+    <%= image_tag 'icon_arrow.svg', class: 'arrow-icon'%>
+    <div class="dropdown-card">
+      <div class="dropdown-options">
+        <%= link_to 'All tasks', list_path(id: @list_selected.id, filter: :all) %>
+        <%= link_to 'Tasks for today', list_path(id: @list_selected.id, filter: :today) %>
+        <%= link_to 'Late tasks', list_path(id: @list_selected.id, filter: :late) %>
+        <%= link_to 'Incompleted Tasks', list_path(id: @list_selected.id, filter: :incompleted) %>
+        <%= link_to 'Completed Tasks', list_path(id: @list_selected.id, filter: :completed) %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Dropdown Menu -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const displayChoice = document.querySelector('.display-choice');
+  const dropdownCard = document.querySelector('.dropdown-card');
+  const arrowIcon = document.querySelector('.arrow-icon');
+
+  // Show or hide the dropdown card on click
+  displayChoice.addEventListener('click', function() {
+    if (dropdownCard.style.display === 'block') {
+      dropdownCard.style.display = 'none';
+      arrowIcon.classList.remove('rotated');
+    } else {
+      dropdownCard.style.display = 'block';
+      arrowIcon.classList.add('rotated');
+    }
+  });
+
+  // closes the card if the user clicks outside of it
+  document.addEventListener('click', function(event) {
+    if (!displayChoice.contains(event.target) && !dropdownCard.contains(event.target)) {
+      dropdownCard.style.display = 'none';
+    }
+  });
+  });
+</script>

@@ -1,0 +1,33 @@
+<%= form_with(model: task, url: tasks_path, local: true) do |form| %>
+  <div class="form_new_task">
+    <div class="input_title">
+      <%= form.text_field :title, placeholder: "Add a new task", id: 'task_title' %>
+    </div>
+    <div class="input_data">
+      <%= form.date_field :term, id: 'task_data' %>
+    </div>
+    <%= form.text_field :id, value: @list_selected.id , style: "display: none;"%>
+    <div class="include-task">
+      <%= form.submit class: "hidden-submit-button" %>
+      <%= image_tag 'icon_add.svg', class: 'icon-add' %>
+      <p>Add Task</p>
+    </div>
+  </div>
+<%end%>
+<!-- Validate Title -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const includeTask = document.querySelector('.include-task');
+    if (includeTask) {
+      includeTask.addEventListener('click', () => {
+        const taskTitle = document.getElementById('task_title');
+        if (!taskTitle.value.trim()) {
+          event.preventDefault();
+          alert("The task title cannot be empty!");
+        } else {
+          includeTask.closest('form').submit();
+        }
+      });
+    }
+    });
+</script>

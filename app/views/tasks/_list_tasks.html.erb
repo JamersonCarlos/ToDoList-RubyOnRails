@@ -1,0 +1,103 @@
+<% tasks.each do |task| %>
+  <div class="task">
+    <%= button_to update_task_path(task.id, completed: !task.completed), method: :put, class: (task.completed ? 'checkbox-task done-icon-task' : 'checkbox-task')  do %>
+      <% if task.completed %>
+        <%= fa_icon 'check' %>
+      <% end %>
+    <%end%>
+    <!-- ###################################### -->
+    <div class="task-content", id="task_content_<%= task.id %>">
+      <div class="title-container">
+        <p class="title-task <%= 'done-text-task' if task.completed%>" ><%= task.title %></p>
+        <!-- task expired-->
+        <% if verify_status_term(task.term) == 1 %>
+          <p class="status_term overdue">Overdue</p>
+        <% end %>
+        <!-- task expires today-->
+        <% if verify_status_term(task.term) == 2 %>
+          <p class="status_term due_today">Due Today</p>
+        <% end %>
+      </div>
+      <p class="term-task <%= 'overdue_data' if verify_status_term(task.term) == 1 %>"><%= convert_format_date(task.term) %></p>
+    </div>
+    <!-- ###################################### -->
+    <div id="formUpdateTask_<%= task.id %>" class="form_update_task hidden">
+      <%= form_with(model: task, local:true , url: update_task_path(task.id)) do |form| %>
+        <div>
+          <% input_title_id = "inputTitle_#{task.id}"%>
+          <%= form.text_field :title, id: input_title_id, class: 'title_input'%>
+        </div>
+        <div>
+          <% input_term_id = "inputTerm_#{task.id}"%>
+          <%= form.date_field :term, id: input_term_id %>
+        </div>
+      <%end%>
+    </div>
+    <!-- ###################################### -->
+    <div class="member-task">
+      <div class="logo">
+        <p>J</p>
+      </div>
+      <p>Me</p>
+    </div>
+    <%= image_tag 'icon_edit.svg', class: 'button_edit', id: "btn_edit_#{task.id}"%>
+    <%= image_tag 'icon_edit_cancel.svg', class: 'button_edit_cancel hidden', id: "btn_edit_cancel_#{task.id}"%>
+    <%= button_to delete_task_path(task.id), method: :delete, class: "btn_remove" do %>
+      <%= image_tag 'icon_trash.svg' %>
+    <%end%>
+  </div>
+<% end %>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+     document.querySelectorAll(".button_edit").forEach(function(title) {
+      title.addEventListener("click", function() {
+        const taskId = title.id.split('_')[2];
+        const form = document.getElementById(`formUpdateTask_${taskId}`);
+        const inputTitle = document.getElementById(`inputTitle_${taskId}`);
+        const taskContent = document.getElementById(`task_content_${taskId}`);
+        const cancelButton = document.getElementById(`btn_edit_cancel_${taskId}`);
+
+        //close open forms
+        document.querySelectorAll('.form_update_task').forEach(function(otherForm) {
+          otherForm.classList.add("hidden");
+        });
+        document.querySelectorAll('.button_edit_cancel').forEach(function(otherEditButton) {
+          otherEditButton.classList.add("hidden");
+        });
+        document.querySelectorAll('.task-content').forEach(function(otherTaskContent) {
+          otherTaskContent.classList.remove("hidden");
+        });
+        document.querySelectorAll('.button_edit').forEach(function(otherEditButton) {
+          otherEditButton.classList.remove("hidden");
+        });
+
+        //show edit form
+        taskContent.classList.add("hidden");
+        title.classList.add("hidden");
+        form.classList.remove("hidden");
+        cancelButton.classList.remove("hidden");
+
+        
+
+        form.addEventListener("submit", function() {
+          if(inputTitle.value.trim() === "") {
+            event.preventDefault();
+          }
+        });
+      });
+    });
+    document.querySelectorAll(".button_edit_cancel").forEach(function(cancelButton) {
+      cancelButton.addEventListener("click", function() {
+        const taskId = cancelButton.id.split('_')[3];
+        const form = document.getElementById(`formUpdateTask_${taskId}`);
+        const inputTitle = document.getElementById(`inputTitle_${taskId}`);
+        const taskContent = document.getElementById(`task_content_${taskId}`);
+        const editButton = document.getElementById(`btn_edit_${taskId}`);
+        taskContent.classList.remove("hidden");
+        editButton.classList.remove("hidden");
+        cancelButton.classList.add("hidden");
+        form.classList.add("hidden");
+      });
+    });
+  });
+</script>

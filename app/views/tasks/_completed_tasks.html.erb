@@ -1,0 +1,10 @@
+<!-- Header Section -->
+<div class="title_section_tasks">
+  <h2>✅ Completed Tasks - <%= filter_completed(@tasks).length %></h2>
+</div>
+<!-- Chosen filter -->
+<%= render 'tasks/dropdown_filter', select: 'Completed Tasks' %>
+<!-- Views Today Lists -->
+<div class="list_tasks">
+  <%= render 'tasks/list_tasks', tasks: filter_completed(@tasks) %>
+</div>

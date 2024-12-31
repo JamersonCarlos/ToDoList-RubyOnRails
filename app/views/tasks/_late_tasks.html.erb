@@ -1,0 +1,10 @@
+<!-- Header Section -->
+<div class="title_section_tasks">
+  <h2>⚠️ Late tasks - <%= filter_tasks_overdue(@tasks).length %></h2>
+</div>
+<!-- Chosen filter -->
+<%= render 'tasks/dropdown_filter', select: 'Late Tasks' %>
+<!-- View late tasks -->
+<div class="list_tasks">
+  <%= render 'tasks/list_tasks', tasks: filter_tasks_overdue(@tasks) %>
+</div>
