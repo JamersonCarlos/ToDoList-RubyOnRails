@@ -1,0 +1,168 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+ 
+* { 
+    font-family: "Inter", serif;
+}
+
+h2 { 
+    color: #434657;
+}
+
+.navigation-section { 
+    width: 20%;
+    min-width: 250px; 
+    background-color: #F5F4FD;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    height: 100%;
+
+}
+
+
+.user-content { 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+ .logo { 
+    background: linear-gradient(45deg, #221ECA, #6461DA);
+    width: 32px;
+    height: 32px;
+    color: white;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.lists { 
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.lists > .title-section { 
+    color: #A7ABC3;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.item-list { 
+    border: none;
+    font-size: 16px;
+    text-align: start;
+    background-color: transparent;
+    cursor: pointer;
+    width: 100%;
+}
+
+.item-list-container { 
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.selected-list { 
+    padding: 10px 15px 10px 10px;
+    background-color: #D5D4F5;
+    border-radius: 0px 30px 30px 0px;
+    border-left: 4px solid #7b61ff;
+    width: 100%;
+}
+
+.list_title { 
+    width: 80%;
+    
+}
+
+
+.not-selected-list { 
+    transition: transform 0.3s ease;
+}
+.not-selected-list:hover {
+    transform: translateX(10px); 
+    cursor: pointer;
+}
+
+.form_container { 
+    width: 100%;
+}
+
+#task_title, #task_data, #list_title{ 
+    width: 100%;
+    padding: 5px;
+    border-width: 1px;
+    border-color: #7b61ff;
+    border-radius: 7px;
+    background-color: transparent;
+    font-family: "Inter", serif;
+    color: #82869E
+}
+
+
+#task_title:focus { 
+    outline: none;
+}
+
+.tasks-container { 
+    padding: 20px;
+    width: 100%;
+    background-color: #f8f8fc;
+  
+}
+
+.background_image { 
+    background-image: url('background_root.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    color: #A7ABC3;
+}
+
+
+
+.checkbox-task { 
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    border: 1px solid #BCBFD6;
+    border-radius: 2px;   
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+  
+  .arrow-icon {
+    transition: transform 0.3s ease; /* Animação suave */
+    transform: rotate(90deg);
+  }
+  
+  /* Quando o card está ativo */
+  .arrow-icon.rotated {
+    transform: rotate(0deg); /* Rotaciona 90 graus */
+  }
+
+
+  .include-task { 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 110px;
+    color: #58aeff; 
+    padding-left: 10px;
+    cursor: pointer;
+  }
