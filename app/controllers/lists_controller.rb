@@ -3,42 +3,52 @@ class ListsController < ApplicationController
 
   # GET /lists or /lists.json
   def index
+    @list = List.new
+    @list_selected = List.new
     @lists = List.all
   end
 
   # GET /lists/1 or /lists/1.json
   def show
-    @tasks = Task.where(list_id: @list.id)
-  end
-
-  # GET /lists/new
-  def new
     @list = List.new
-  end
-
-  # GET /lists/1/edit
-  def edit
+    @list_selected = List.find(params[:id])
+    @lists = List.all
+    @tasks = Task.where(list_id: @list_selected.id)
+    @current_filter = params[:filter] || 'all'
+    render "lists/index"
   end
 
   # POST /lists or /lists.json
   def create
     @list = List.new(list_params)
-    
     if List.where(title: list_params['title']) == []
-      respond_to do |format|
-        if @list.save
-          format.html { redirect_to root_path, notice: "List was successfully created." }
-          format.json { render :show, status: :created, location: @list }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @list.errors, status: :unprocessable_entity }
-        end
+      if @list.save
+        flash[:notice] = "List was successfully created."
+      else
+        flash[:error] = "Title cannot be empty"
       end
     else
-      redirect_to root_path
+      flash[:error] = "There is already a list with that title" 
     end
+    redirect_to request.referrer
   end
 
+  # DELETE /lists/1 or /lists/1.json
+  def destroy
+    @list = List.find_by(id: params[:id])
+    if @list
+      if @list.destroy!
+        flash[:notice] = "List was successfully destroyed."
+        redirect_to root_path
+      else
+        flash[:error] = "Error when deleting list"
+        redirect_to request.referrer
+      end
+    end
+   
+  end
+
+  
   # PATCH/PUT /lists/1 or /lists/1.json
   def update
     respond_to do |format|
@@ -52,24 +62,14 @@ class ListsController < ApplicationController
     end
   end
 
-  # DELETE /lists/1 or /lists/1.json
-  def destroy
-    @list.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to lists_url, notice: "List was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
-      @list = List.find(params[:id])
+      @list = List.find_by(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def list_params
-      params.require(:list).permit(:title, :description, :category)
+      params.require(:list).permit(:title);
     end
 end
