@@ -1,16 +1,67 @@
 <div class="lists">
   <p class="title-section">My Lists</p>
   <% @lists.each do |list| %>
-    <div class="item-list-container <%=  'selected-list' if !@list_selected.id.nil? && @list_selected.id == list.id%>" >
-      <%= button_to list_path(list.id), method: :get, class: "item-list" do %>
-        <p class="list_title <%=  'not-selected-list' if @list_selected.id != list.id%>"><%= list.title %></p>
+    <div class="item-list-container <%= 'selected-list' if !@list_selected.id.nil? && @list_selected.id == list.id%>" >
+      <%= button_to list_path(list.id), method: :get, class: "item-list", disabled: @list_selected.id == list.id do %>
+        <p class="list_title <%=  'not-selected-list' if @list_selected.id != list.id%>" id="list_title_<%= list.id %>" ><%= list.title %></p>
       <%end%>
+      <div id="formUpdateList_<%= list.id %>" class="form_update_list hidden">
+        <%= form_with(model: list, local:true , url: update_list_path(list.id)) do |form| %>
+          <div>
+            <% input_title_id = "inputTitle_list_#{list.id}"%>
+            <%= form.text_field :title, id: input_title_id, class: 'title_input'%>
+          </div>
+          <%= button_tag type: 'submit', id: 'button_ok_edit' do %>
+            <%= image_tag 'icon_ok.svg', alt: 'Edit' %>
+          <% end %>
+        <%end%>
+      </div>
       <% if !@list_selected.id.nil? && @list_selected.id == list.id %>
-        <%= image_tag 'icon_edit_small.svg', class: 'button_edit', id: "btn_edit_#{list.id}"%>
-        <%= button_to delete_list_path(list.id), method: :delete, class: "btn_remove" do %>
+        <%= image_tag 'icon_edit_small.svg', class: 'button_edit_list', id: "btn_edit_list_#{list.id}"%>
+        <%= button_to delete_list_path(list.id), method: :delete, class: "btn_remove", id: "btn_remove_list" do %>
           <%= image_tag 'icon_trash.svg' %>
         <%end%>
       <% end %>
     </div>
   <% end %>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    const buttonEdit = document.querySelector(`.button_edit_list`);
+    const listId = buttonEdit.id.split('_')[3];
+    const buttonEditOkay = document.getElementById(`button_ok_edit`);
+    const buttonDestroy = document.getElementById(`btn_remove_list`);
+    const form = document.getElementById(`formUpdateList_${listId}`);
+    const inputTitle = document.getElementById(`inputTitle_list_${listId}`);
+    const listTitle = document.getElementById(`list_title_${listId}`);
+
+    function toggleEditMode(enable) {
+      buttonDestroy.classList.toggle("hidden", enable);
+      form.classList.toggle("hidden", !enable);
+      buttonEditOkay.classList.toggle("hidden", !enable);
+      listTitle.classList.toggle("hidden", enable);
+      buttonEdit.classList.toggle("hidden", enable);
+    }
+
+    buttonEdit.addEventListener("click", function() {
+      toggleEditMode(true);
+    });
+
+    buttonEditOkay.addEventListener("click", function() {
+      toggleEditMode(false);
+        if (inputTitle.value.trim() === "") {
+          return;
+        }
+        form.submit();
+    });
+
+    form.addEventListener("submit", function(event) {
+      if (inputTitle.value.trim() === "") {
+        event.preventDefault();
+
+      }
+    });
+
+  });
+</script>

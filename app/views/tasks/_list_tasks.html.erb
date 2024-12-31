@@ -23,7 +23,7 @@
     <!-- ###################################### -->
     <div id="formUpdateTask_<%= task.id %>" class="form_update_task hidden">
       <%= form_with(model: task, local:true , url: update_task_path(task.id)) do |form| %>
-        <div>
+        <div class="div_input_title">
           <% input_title_id = "inputTitle_#{task.id}"%>
           <%= form.text_field :title, id: input_title_id, class: 'title_input'%>
         </div>

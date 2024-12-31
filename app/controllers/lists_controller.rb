@@ -51,16 +51,15 @@ class ListsController < ApplicationController
   
   # PATCH/PUT /lists/1 or /lists/1.json
   def update
-    respond_to do |format|
-      if list_params[:title].present? && @list.update(list_params) 
-        format.html { redirect_to root_path }
-        format.json { render :show, status: :ok, location: @list }
-      else
-        format.html { redirect_to request.referrer, notice: "Title is a required attribute"}
-      end
+    if list_params[:title].present? && @list.update(list_params) 
+      flash[:notice] = "List updated successfully"     
+    else
+      flash[:error] = "Title is a required attribute"
     end
+    redirect_to request.referrer
   end
 
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
@@ -72,3 +71,4 @@ class ListsController < ApplicationController
       params.require(:list).permit(:title);
     end
 end
+ 
