@@ -1,6 +1,5 @@
 class ListsController < ApplicationController
   before_action :set_list, only: %i[ show edit update destroy ]
-  before_action :set_view, only: %i[ index update]
 
   # GET /lists or /lists.json
   def index
@@ -65,7 +64,7 @@ class ListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
-      @list = List.find_by(params[:id])
+      @list = List.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
