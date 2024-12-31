@@ -1,39 +1,25 @@
 <div class="form_container">
   <%= form_with(model: list, local: true) do |form| %>
-    <div>
-      <%= form.label :title, style: "display: block"%>
-      <%= form.text_field :title , id: "listTitle"%>
+    <div class="input-title">
+      <%= form.text_field :title , id: "list_title", placeholder: "Add new list"%>
     </div>
-
     <div>
-      <%= form.label :description, style: "display: block" %>
-      <%= form.text_area :description %>
+      <%= form.submit "Enviar", style: "display: none;" %>
     </div>
-
-    <div>
-      <%= form.label :category, style: "display: block" %>
-      <%= form.select :category, options_for_select([['', '',], ['Work', 'work'], ['Personal', 'personal'], ['Study', 'study'], ['Health', 'health'], ['Finance', 'finance'], ['Social', 'social'], ['Travel', 'travel'], ['Projects', 'projects'], ['Leisure', 'leisure'], ['Priority', 'priority']]), {}, { class: 'form-select' } %>
-    </div>
-
-    <div>
-      <%= form.submit  id: 'submit_button' %>
-    </div>  
   <% end %>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const taskTitleInput = document.getElementById('listTitle');
+      const taskTitleInput = document.getElementById('list_title');
       const submitButton = document.getElementById('submit_button');
 
-      
+
       function updateSubmitButton() {
-        submitButton.disabled = taskTitleInput.value.trim() === ''; 
+        submitButton.disabled = taskTitleInput.value.trim() === '';
       }
 
       updateSubmitButton();
 
-      taskTitleInput.addEventListener('input', updateSubmitButton); 
+      taskTitleInput.addEventListener('input', updateSubmitButton);
     });
   </script>
 </div>
-
-
