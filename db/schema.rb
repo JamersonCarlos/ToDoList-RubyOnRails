@@ -13,14 +13,14 @@
 ActiveRecord::Schema[7.1].define(version: 2024_05_28_214517) do
   create_table "lists", force: :cascade do |t|
     t.string "title"
-    t.string "description", default: ""
-    t.string "category", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string "title"
+    t.datetime "term"
+    t.string "member", default: "Jamerson Carlos"
     t.boolean "completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
