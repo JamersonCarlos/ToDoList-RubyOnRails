@@ -1,0 +1,12 @@
+<% case @current_filter.to_sym %>
+<% when :all %>
+  <%= render 'tasks/all_tasks' %>
+<% when :today %>
+  <%= render 'tasks/today_tasks' %>
+<% when :late %>
+  <%= render 'tasks/late_tasks' %>
+<% when :incompleted %>
+  <%= render 'tasks/incompleted_tasks' %>
+<% when :completed %>
+  <%= render 'tasks/completed_tasks' %>
+<% end %>

@@ -8,14 +8,23 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag 'icon_app.svg' %>
   </head>
-
   <body>
-    <div class="head_page">
-      <%= image_tag 'icon_app.svg'%>
-      <p class="to">to</p>
-      <p class="do">do</p>
-    </div>
     <%= yield %>
+    <div id="flash-card" class="flash-card <%= flash[:error] ? 'error' : '' %>">
+      <%= flash[:notice] || flash[:error] %>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const flashCard = document.getElementById('flash-card');
+
+        if (flashCard && flashCard.textContent.trim() !== "") {
+          flashCard.classList.add('show');
+
+          setTimeout(() => {
+            flashCard.classList.remove('show');
+          }, 3000);
+        }
+      });
+    </script>
   </body>
 </html>
-  
