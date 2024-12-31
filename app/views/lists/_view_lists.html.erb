@@ -1,0 +1,16 @@
+<div class="lists">
+  <p class="title-section">My Lists</p>
+  <% @lists.each do |list| %>
+    <div class="item-list-container <%=  'selected-list' if !@list_selected.id.nil? && @list_selected.id == list.id%>" >
+      <%= button_to list_path(list.id), method: :get, class: "item-list" do %>
+        <p class="list_title <%=  'not-selected-list' if @list_selected.id != list.id%>"><%= list.title %></p>
+      <%end%>
+      <% if !@list_selected.id.nil? && @list_selected.id == list.id %>
+        <%= image_tag 'icon_edit_small.svg', class: 'button_edit', id: "btn_edit_#{list.id}"%>
+        <%= button_to delete_list_path(list.id), method: :delete, class: "btn_remove" do %>
+          <%= image_tag 'icon_trash.svg' %>
+        <%end%>
+      <% end %>
+    </div>
+  <% end %>
+</div>
